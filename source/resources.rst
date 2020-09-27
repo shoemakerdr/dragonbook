@@ -18,19 +18,19 @@ I work on developer and infrastructure tooling for my job, so this is all nice t
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="http://www.youtube.com/embed/b426rrjvO-w?rel=0" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/b426rrjvO-w?rel=0" frameborder="0" allowfullscreen></iframe>
 
 Lecture 2: Compiler Overview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
-    <iframe width="560" height="315" src="http://www.youtube.com/embed/afwVEfZLhnI?rel=0" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/afwVEfZLhnI?rel=0" frameborder="0" allowfullscreen></iframe>
 
 Lecture 3: Lexing
 ^^^^^^^^^^^^^^^^^
 .. raw:: html
 
-    <iframe width="560" height="315" src="http://www.youtube.com/embed/pki4_nA8_to?rel=0" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/pki4_nA8_to?rel=0" frameborder="0" allowfullscreen></iframe>
 
 
 I'll add more links and thoughts later as I watch these videos...
