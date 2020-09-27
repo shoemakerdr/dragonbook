@@ -12,24 +12,44 @@ BUILDDIR      = build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-deploy: sphinx-build push-static-build
+deploy: sphinx-build run-static-build
 
-push-static-build:
+run-static-build:
 	@git branch -D static-build
 	@git checkout -b static-build
 	@mv build/html/* .
-	@rm -rf build
 	@touch .nojekyll
 	@git add -A
 	@git commit -m 'New static build'
 	@git push -f origin static-build
 	@git checkout master
 
-sphinx-build: Makefile
+sphinx-build:
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
+clean:
+	@rm -rf build
 
-.PHONY: help Makefile clean-static deploy
+serve: clean sphinx-build
+	@echo "================================================================================"
+	@echo "================================================================================"
+	@echo "================================================================================"
+	@echo
+	@echo "                 Serving your docs at http://localhost:8787"
+	@echo
+	@echo "================================================================================"
+	@echo "================================================================================"
+	@echo "================================================================================"
+	@python -m http.server --directory build/html 8787
+
+.PHONY: \
+	help\
+	Makefile\
+	clean\
+	run-static-build\
+	deploy\
+	sphinx-build\
+	serve
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
