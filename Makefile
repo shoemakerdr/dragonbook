@@ -12,10 +12,24 @@ BUILDDIR      = build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-deploy:
-	@echo Doing deploy...
+deploy: sphinx-build push-static-build
 
-.PHONY: help Makefile deploy
+push-static-build:
+	@git branch -D static-build
+	@git checkout -b static-build
+	@mv build/html/* .
+	@rm -rf build
+	@touch .nojekyll
+	@git add -A
+	@git commit -m 'New static build'
+	@git push -f origin static-build
+	@git checkout master
+
+sphinx-build: Makefile
+	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+
+.PHONY: help Makefile clean-static deploy
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
