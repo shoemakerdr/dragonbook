@@ -16,3 +16,4 @@ This little site is for documenting my journey.
    :caption: Contents:
 
    resources
+   interesting_stuff

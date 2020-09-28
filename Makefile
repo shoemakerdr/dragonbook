@@ -30,7 +30,7 @@ sphinx-build:
 clean:
 	@rm -rf build
 
-serve: clean sphinx-build
+serve: sphinx-build
 	@echo "================================================================================"
 	@echo "================================================================================"
 	@echo "================================================================================"
@@ -42,6 +42,15 @@ serve: clean sphinx-build
 	@echo "================================================================================"
 	@python -m http.server --directory build/html 8787
 
+watch:
+	@rerun \
+		-i _static \
+		-i _templates \
+		-i Makefile \
+		-i watch \
+		-i .pylintrc \
+		'$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)'
+
 .PHONY: \
 	help\
 	Makefile\
@@ -49,7 +58,8 @@ serve: clean sphinx-build
 	run-static-build\
 	deploy\
 	sphinx-build\
-	serve
+	serve\
+	watch
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
